@@ -26,6 +26,14 @@ parameters:
     description: AWS profile name to be configured.
     type: string
     default: ''
+  new-profile-name:
+    description: Name of new profile associated with role arn.
+    type: string
+    default: ""
+  role-arn:
+    type: string
+    default: ""
+    description: Role ARN that the profile should take.
   family:
     description: Name of the task definition's family.
     type: string
@@ -186,12 +194,10 @@ parameters:
     type: string
     default: ''
 steps:
-  - aws-cli/setup:
+  - update-service:
       aws-access-key-id: << parameters.aws-access-key-id >>
       aws-secret-access-key: << parameters.aws-secret-access-key >>
       aws-region: << parameters.aws-region >>
-      profile-name: << parameters.profile-name >>
-  - update-service:
       family: << parameters.family >>
       cluster-name: << parameters.cluster-name >>
       service-name: << parameters.service-name >>
@@ -212,3 +218,5 @@ steps:
       task-definition-tags: << parameters.task-definition-tags >>
       verification-timeout: << parameters.verification-timeout >>
       profile-name: << parameters.profile-name >>
+      new-profile-name: << parameters.new-profile-name >>
+      role-arn: << parameters.role-arn >>
