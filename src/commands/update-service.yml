@@ -190,7 +190,7 @@ steps:
             command: echo 'export PROFILE_NAME="<< parameters.profile-name >>" >> $BASH_ENV'
 
   - when:
-      condition: 
+      condition:
         and:
           - << parameters.role-arn >>
           - << parameters.new-profile-name >>
