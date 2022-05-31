@@ -202,6 +202,9 @@ steps:
   - unless:
       condition: << parameters.skip-task-definition-registration >>
       steps:
+        - run:
+            name: Test PROFILE_NAME variable
+            command: echo ${PROFILE_NAME}
         - update-task-definition:
             family: << parameters.family >>
             container-image-name-updates: << parameters.container-image-name-updates >>
