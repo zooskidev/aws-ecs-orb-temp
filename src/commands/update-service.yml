@@ -187,7 +187,7 @@ steps:
       steps:
         - run:
             name: "Setup PROFILE_NAME variable"
-            command: echo 'export PROFILE_NAME="<< parameters.profile-name >>" >> $BASH_ENV'
+            command: echo 'export PROFILE_NAME="<< parameters.profile-name >>"' >> $BASH_ENV
 
   - when:
       condition:
@@ -197,7 +197,7 @@ steps:
       steps:
         - run:
             name: "Setup PROFILE_NAME variable"
-            command: echo 'export PROFILE_NAME="<< parameters.new-profile-name >>" >> $BASH_ENV'
+            command: echo 'export PROFILE_NAME="<< parameters.new-profile-name >>"' >> $BASH_ENV
 
   - unless:
       condition: << parameters.skip-task-definition-registration >>
