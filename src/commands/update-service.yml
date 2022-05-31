@@ -206,6 +206,7 @@ steps:
             family: << parameters.family >>
             container-image-name-updates: << parameters.container-image-name-updates >>
             container-env-var-updates: << parameters.container-env-var-updates >>
+            profile-name: ${PROFILE_NAME}
   - when:
       condition: << parameters.skip-task-definition-registration >>
       steps:
