@@ -133,6 +133,11 @@ parameters:
       The deployment circuit breaker can only be used for services using the rolling update (ECS ) deployment type.
     type: boolean
     default: false
+  enable-execute-command:
+    description: |
+      Determines whether ECS Exec is enabled for new tasks deployed by the updated service.
+    type: boolean
+    default: false
   verify-revision-is-deployed:
     description: |
       Runs the verify-revision-is-deployed Orb command to verify that
@@ -203,6 +208,7 @@ steps:
       service-name: << parameters.service-name >>
       deployment-controller: << parameters.deployment-controller >>
       enable-circuit-breaker: << parameters.enable-circuit-breaker >>
+      enable-execute-command: << parameters.enable-execute-command >>
       codedeploy-application-name: << parameters.codedeploy-application-name >>
       codedeploy-deployment-group-name: << parameters.codedeploy-deployment-group-name >>
       codedeploy-load-balanced-container-name: << parameters.codedeploy-load-balanced-container-name >>

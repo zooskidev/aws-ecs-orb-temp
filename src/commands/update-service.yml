@@ -95,6 +95,11 @@ parameters:
       To use the deployment circuit breaker for CodeDeploy services, the verify-revision-is-deployed parameter must be set to true.
     type: boolean
     default: false
+  enable-execute-command:
+    description: |
+      Determines whether ECS Exec is enabled for new tasks deployed by the updated service.
+    type: boolean
+    default: false
   verify-revision-is-deployed:
     description: |
       Runs the verify-revision-is-deployed Orb command to verify that the revision has been deployed and is the only deployed revision for the service.
@@ -265,6 +270,7 @@ steps:
               ECS_PARAM_CLUSTER_NAME: <<parameters.cluster-name>>
               ECS_PARAM_PROFILE_NAME: ${PROFILE_NAME}
               ECS_PARAM_ENABLE_CIRCUIT_BREAKER: <<parameters.enable-circuit-breaker>>
+              ECS_PARAM_ENABLE_EXECUTE_COMMAND: <<parameters.enable-execute-command>>
 
   - when:
       condition:
