@@ -23,7 +23,7 @@ if [ "$ECS_PARAM_ENABLE_CIRCUIT_BREAKER" == "1" ]; then
     set -- "$@" --deployment-configuration "deploymentCircuitBreaker={enable=true,rollback=true}"
 fi
 
-if [ "$ECS_PARAM_ENABLE_EXECUTE_COMMAND" == 1 ]; then
+if [ "$ECS_PARAM_ENABLE_EXECUTE_COMMAND" == "1" ]; then
     set -- "$@" --enable-execute-command
 fi
 
