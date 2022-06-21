@@ -27,6 +27,8 @@ if [ "$ECS_PARAM_ENABLE_EXECUTE_COMMAND" == "1" ]; then
     set -- "$@" --enable-execute-command
 fi
 
+echo $@
+
 DEPLOYED_REVISION=$(aws ecs update-service \
     --cluster "$ECS_PARAM_CLUSTER_NAME" \
     --service "${ECS_PARAM_SERVICE_NAME}" \
