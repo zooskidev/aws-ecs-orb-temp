@@ -5,6 +5,7 @@ ECS_PARAM_FAMILY=$(eval echo "$ECS_PARAM_FAMILY")
 ECS_PARAM_CLUSTER_NAME=$(eval echo "$ECS_PARAM_CLUSTER_NAME")
 ECS_PARAM_SERVICE_NAME=$(eval echo "$ECS_PARAM_SERVICE_NAME")
 ECS_PARAM_PROFILE_NAME=$(eval echo "$ECS_PARAM_PROFILE_NAME")
+ECS_PARAM_ENABLE_EXECUTE_COMMAND=$(eval echo "$ECS_PARAM_ENABLE_EXECUTE_COMMAND")
 
 if [ -z "${ECS_PARAM_SERVICE_NAME}" ]; then
     ECS_PARAM_SERVICE_NAME="$ECS_PARAM_FAMILY"
@@ -21,6 +22,12 @@ fi
 if [ "$ECS_PARAM_ENABLE_CIRCUIT_BREAKER" == "1" ]; then
     set -- "$@" --deployment-configuration "deploymentCircuitBreaker={enable=true,rollback=true}"
 fi
+
+if [ "$ECS_PARAM_ENABLE_EXECUTE_COMMAND" == "1" ]; then
+    set -- "$@" --enable-execute-command
+fi
+
+echo "$@"
 
 DEPLOYED_REVISION=$(aws ecs update-service \
     --cluster "$ECS_PARAM_CLUSTER_NAME" \
